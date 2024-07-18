@@ -54,14 +54,18 @@ export const Login = () => {
         <>
             <h1>Login</h1>
             <div>
-                {/* <label htmlFor="email">Email: </label>
-                <input type="email" name="email" placeholder='Email' onChange={handleChange} />
+                <CInput type="email"
+                    name="email"
+                    placeholder="Email"
+                    emitFunction={handleChange}
+                    label="Email:" />
             </div>
-            <div>
-                {/* <label htmlFor="password">Password: </label> */}
-                {/* <input type="password" name="password" placeholder='Password' onChange={handleChange} /> */}
-                <CInput type="email" name="email" placeholder="Email" emitFunction={handleChange}/>
-            </div>
+            <div><CInput
+                type="password"
+                name="password"
+                placeholder="Password"
+                emitFunction={handleChange}
+            /></div>
             <div>
                 <input type="button" value="Login" onClick={login} />
             </div>
