@@ -12,7 +12,7 @@ export const Header = () => {
                 <CSurfer path="/" content="Home"/>
                 <CSurfer path="/services" content="Services"/>
                 <div onClick={()=>navigate('/login')}>Login</div>
-                {/* <div>Register</div> */}
+                <CSurfer path="/register" content="Register"/>
             </ul>
         </>
     )
