@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CInput } from '../CInput/CInput';
+import { CInput } from '../../components/CInput/CInput';
 
 export const Login = () => {
     const [credentials, setCredentials] = useState(
