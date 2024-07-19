@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export const Services = () => {
+    useEffect(()=> {
+        console.log('UseEffect')
+
+        fetch('http://localhost:4000/api/services')
+        .then(res =>{
+            console.log(res);
+        })
+        .catch(e =>{
+            console.log(e);
+        })
+    })
+
   return (
-    <div>Services</div>
+    <>
+    <h1>Services</h1>
+    </>
   )
 }
