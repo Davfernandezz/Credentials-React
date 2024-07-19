@@ -8,12 +8,12 @@ export const Header = () => {
 
     return (
         <>
-            <ul>
+            <div className='flex align-space-between'>
                 <CSurfer path="/" content="Home"/>
                 <CSurfer path="/services" content="Services"/>
                 <div onClick={()=>navigate('/login')}>Login</div>
                 <CSurfer path="/register" content="Register"/>
-            </ul>
+            </div>
         </>
     )
 }

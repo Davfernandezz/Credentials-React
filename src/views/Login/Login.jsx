@@ -58,7 +58,7 @@ export const Login = () => {
                     name="email"
                     placeholder="Email"
                     emitFunction={handleChange}
-                    label="Email:" />
+                />
             </div>
             <div><CInput
                 type="password"
