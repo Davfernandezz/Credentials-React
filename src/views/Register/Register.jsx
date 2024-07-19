@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { registerUser } from '../../services/apiCalls'
+import { useNavigate } from 'react-router-dom'
 
 export const Register = () => {
+    const navigate = useNavigate()
     const [credentials, setCredentials] = useState(
         {
             email: "",
@@ -9,9 +11,9 @@ export const Register = () => {
         }
     )
 
-    function handleChange(e){
+    function handleChange(e) {
         console.log('Handle Change')
-        setCredentials( (prevState)=>(
+        setCredentials((prevState) => (
             {
                 ...prevState,
                 [e.target.name]: e.target.value
@@ -20,24 +22,31 @@ export const Register = () => {
     }
 
     async function register() {
-		try {
-			console.log(credentials);
+        try {
+            console.log(credentials);
             const response = await registerUser(credentials)
+
+            if (response.success) {
+                navigate('/login')
+            } else {
+                alert(response.message)
+            }
+
             console.log(response)
-		} catch (error) {
-			console.log(error);
-		}
-	}
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
             <h1>Register</h1>
             <div>
-            <input type="text" name="email" id="" placeholder='Email' onChange={handleChange}/>
+                <input type="text" name="email" id="" placeholder='Email' onChange={handleChange} />
             </div><div>
-            <input type="password" name="password_hash" id="" placeholder='Password' onChange={handleChange}/>
+                <input type="password" name="password_hash" id="" placeholder='Password' onChange={handleChange} />
             </div><div>
-            <input type="button" value="Register" onClick={register}/>
+                <input type="button" value="Register" onClick={register} />
             </div>
         </>
     )
