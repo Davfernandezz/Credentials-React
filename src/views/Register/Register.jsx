@@ -1,17 +1,16 @@
 import React, { useState } from 'react'
+import { registerUser } from '../../services/apiCalls'
 
 export const Register = () => {
-
     const [credentials, setCredentials] = useState(
         {
             email: "",
-            password: ""
+            password_hash: ""
         }
     )
 
     function handleChange(e){
         console.log('Handle Change')
-
         setCredentials( (prevState)=>(
             {
                 ...prevState,
@@ -23,23 +22,8 @@ export const Register = () => {
     async function register() {
 		try {
 			console.log(credentials);
-
-			// consumir la api
-			const request = await fetch("http://localhost:4000/register", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(credentials),
-			});
-
-			const result = await request.json();
-
-			console.log(result);
-
-			// su api devuelve ok redirigo a una pagina Dashboard
-
-			// Si la api devuelve false mostramos mensaje de error
+            const response = await registerUser(credentials)
+            console.log(response)
 		} catch (error) {
 			console.log(error);
 		}
@@ -51,7 +35,7 @@ export const Register = () => {
             <div>
             <input type="text" name="email" id="" placeholder='Email' onChange={handleChange}/>
             </div><div>
-            <input type="password" name="password" id="" placeholder='Password' onChange={handleChange}/>
+            <input type="password" name="password_hash" id="" placeholder='Password' onChange={handleChange}/>
             </div><div>
             <input type="button" value="Register" onClick={register}/>
             </div>

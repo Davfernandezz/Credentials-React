@@ -8,7 +8,7 @@ export const Header = () => {
 
     return (
         <>
-            <div className='flex align-space-between'>
+            <div className='flex justify-space-between'>
                 <CSurfer path="/" content="Home"/>
                 <CSurfer path="/services" content="Services"/>
                 <div onClick={()=>navigate('/login')}>Login</div>
