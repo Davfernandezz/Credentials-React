@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { CCard } from '../../components/CCard/CCard'
 
 export const Services = () => {
 
@@ -25,10 +26,7 @@ export const Services = () => {
       <h1>Services</h1>
       {
         services.map((service) => (
-          <div key={service.id} className='card'>
-          <h3>{service.service_name}</h3>
-          <p>{service.description}</p>
-          </div>
+         <CCard key={service.id} name={service.service_name} description={service.description}/>
         )
         )
       }
