@@ -13,7 +13,7 @@ export const registerUser = async (credentials) => {
     return result;
 }
 
-export const loginUser =  async (credentials) => {
+export const loginUser = async (credentials) => {
     const request = await fetch(`${URL}/login`, {
         method: "POST",
         headers: {
@@ -23,4 +23,15 @@ export const loginUser =  async (credentials) => {
     });
     const result = await request.json();
     return result;
+}
+
+export const getUserProfile = async (token) => {
+    const response = await fetch(`${URL}/users/profile`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    });
+    return await response.json()
 }

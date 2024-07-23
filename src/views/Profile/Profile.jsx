@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CInput } from '../../components/CInput/CInput'
 import { useNavigate } from 'react-router-dom'
+import { getUserProfile } from '../../services/apiCalls'
 
 export const Profile = () => {
     const [profileData, setProfileData] = useState({ name: "", email: "", CreatedAt: "" })
@@ -13,7 +14,12 @@ export const Profile = () => {
         if (!passport) {
             navigate("/login")
         } else {
-            token = passport.token
+            const bringMyProfile = async () =>{
+                const response = await getUserProfile(passport.token)
+                setProfileData(response.data)
+                console.log(response)
+            }
+            bringMyProfile()
         }
     }, [])
 
@@ -25,9 +31,9 @@ export const Profile = () => {
     return (
         <>
             <h1>Profile</h1>
-            <p>Name: {profileData.name}</p>
+            <p>Name: {profileData.first_name}</p>
             <p>Email: {profileData.email}</p>
-            <p>Created_at: {profileData.CreatedAt}</p>
+            <p>Created_at: {profileData.created_at}</p>
             <CInput type="button" name="logout" value="logout" emitFunction={logout} />
         </>
     )
