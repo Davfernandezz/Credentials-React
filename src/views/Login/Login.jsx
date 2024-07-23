@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { CInput } from '../../components/CInput/CInput';
 import { loginUser } from '../../services/apiCalls';
+import { jwtDecode } from 'jwt-decode';
 
 export const Login = () => {
     const [credentials, setCredentials] = useState(
@@ -26,8 +27,12 @@ export const Login = () => {
         try {
           const response = await loginUser(credentials);
           if (response.success) {
-            console.log(response.token);
-            localStorage.setItem("token", response.token);
+            const decodedToken = jwtDecode(response.token)
+            const passport = {
+                token: response.token,
+                tokenData: decodedToken
+            }
+            localStorage.setItem("passport",JSON.stringify(passport));
           } else {
             console.log(response);
           }

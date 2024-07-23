@@ -5,6 +5,8 @@ export const Services = () => {
 
   const [services, setServices] = useState([])
 
+  const passport = JSON.parse(localStorage.getItem("passport"))
+
   useEffect(() => {
     console.log('UseEffect')
 
@@ -23,7 +25,7 @@ export const Services = () => {
 
   return (
     <>
-      <h1>Services</h1>
+      <h1>Services, {passport.tokenData.email}</h1>
       {
         services.map((service) => (
          <CCard key={service.id} name={service.service_name} description={service.description}/>
