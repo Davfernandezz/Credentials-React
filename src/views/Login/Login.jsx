@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { CInput } from '../../components/CInput/CInput';
+import { loginUser } from '../../services/apiCalls';
 
 export const Login = () => {
     const [credentials, setCredentials] = useState(
         {
             email: "",
-            password: ""
+            password_hash: ""
         }
     )
 
@@ -19,10 +20,21 @@ export const Login = () => {
         ))
     }
 
-    function login() {
-        console.log('Login')
-        console.log(credentials)
-    }
+    async function login() {
+        console.log("login");
+        console.log(credentials);
+        try {
+          const response = await loginUser(credentials);
+          if (response.success) {
+            console.log(response.token);
+            localStorage.setItem("token", response.token);
+          } else {
+            console.log(response);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
 
     //OPCION 1
     // 
@@ -62,7 +74,7 @@ export const Login = () => {
             </div>
             <div><CInput
                 type="password"
-                name="password"
+                name="password_hash"
                 placeholder="Password"
                 emitFunction={handleChange}
             /></div>
