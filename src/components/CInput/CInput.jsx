@@ -9,6 +9,7 @@ export const CInput = ({ type = 'text', name = "", placeholder = "", emitFunctio
             <input
                 type={type}
                 name={name}
+                value={value}
                 placeholder={placeholder}
                 onChange={emitFunction} />
         </>
