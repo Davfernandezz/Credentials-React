@@ -35,3 +35,15 @@ export const getUserProfile = async (token) => {
     });
     return await response.json()
 }
+
+export const updateProfile = async (changes, token) => {
+    const response = await fetch(`${URL}/profile/update`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(changes),
+    });
+    return await response.json()
+}
