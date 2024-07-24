@@ -25,7 +25,7 @@ export const Services = () => {
 
   return (
     <>
-      <h1>Services, {passport.tokenData.email}</h1>
+      <h1>Services</h1>
       {
         services.map((service) => (
          <CCard key={service.id} name={service.service_name} description={service.description}/>

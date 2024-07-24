@@ -25,16 +25,17 @@ export const Profile = () => {
 
     const logout = () => {
         localStorage.removeItem("passport")
-        console.log("Closed session")
+        navigate("/login")
     }
 
     return (
         <>
             <h1>Profile</h1>
+            <h2>Bienvenido {profileData.email}</h2>
             <p>Name: {profileData.first_name}</p>
             <p>Email: {profileData.email}</p>
             <p>Created_at: {profileData.created_at}</p>
-            <CInput type="button" name="logout" value="logout" emitFunction={logout} />
+            <CInput type="button" name="logout" value="logout" onClick={logout} />
         </>
     )
 }
