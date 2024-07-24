@@ -3,6 +3,7 @@ import { CInput } from '../../components/CInput/CInput';
 import { loginUser } from '../../services/apiCalls';
 import { jwtDecode } from 'jwt-decode';
 import { isTokenValid } from '../../components/utils/function';
+import './Login.css';
 
 export const Login = () => {
     const [credentials, setCredentials] = useState(
@@ -42,52 +43,34 @@ export const Login = () => {
           console.log(error);
         }
       }
-
-    //OPCION 1
-    // 
-    // const [email, setEmail] = useState("")
-    // const [password, setPassword] = useState("")
-
-    // function handleChange(e) {
-    //   console.log('handleChange')
-
-    //   if (e.target.name === 'email') {
-    //     setEmail(e.target.value)
-    //   }
-
-    //   if (e.target.name === 'password') {
-    //     setPassword(e.target.value)
-    //   }
-    // }
-
-    // function login() {
-    //   console.log('Login')
-    //   if(email.length === 0 || password.length === 0){
-    //     return alert('Email and password are required')
-    //   }
-    //   console.log(email)
-    //   console.log(password)
-    // }
-
-    return (
-        <>
-            <h1>Login</h1>
-            <div>
-                <CInput type="email"
-                    name="email"
-                    placeholder="Email"
-                    emitFunction={handleChange}
-                />
+      return (
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-md-6">
+              <div className="card my-5">
+                <div className="card-body">
+                  <h1 className="text-center mb-4">Login</h1>
+                  <form>
+                    <CInput
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      emitFunction={handleChange}
+                    />
+                    <CInput
+                      type="password"
+                      name="password_hash"
+                      placeholder="Password"
+                      emitFunction={handleChange}
+                    />
+                    <button type="button" className="btn btn-danger btn-block" onClick={login}>
+                      Login
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
-            <div><CInput
-                type="password"
-                name="password_hash"
-                placeholder="Password"
-                emitFunction={handleChange}
-            /></div>
-            <div>
-                <input type="button" value="Login" onClick={login} />
-            </div>
-        </>
-    )
-}
+          </div>
+        </div>
+      );
+    };
