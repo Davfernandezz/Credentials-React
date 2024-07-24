@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { registerUser } from '../../services/apiCalls'
 import { useNavigate } from 'react-router-dom'
+import { CInput } from '../../components/CInput/CInput'
 
 export const Register = () => {
     const navigate = useNavigate()
@@ -42,9 +43,9 @@ export const Register = () => {
         <>
             <h1>Register</h1>
             <div>
-                <input type="text" name="email" id="" placeholder='Email' onChange={handleChange} />
+                <CInput type="text" name="email" id="" placeholder='Email' onChange={handleChange} />
             </div><div>
-                <input type="password" name="password_hash" id="" placeholder='Password' onChange={handleChange} />
+                <CInput type="password" name="password_hash" id="" placeholder='Password' onChange={handleChange} />
             </div><div>
                 <input type="button" value="Register" onClick={register} />
             </div>

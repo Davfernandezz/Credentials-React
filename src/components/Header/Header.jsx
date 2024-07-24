@@ -8,7 +8,7 @@ export const Header = () => {
     const navigate = useNavigate();
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <nav className="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
             <div className="container">
                 <a className="navbar-brand" href="/" onClick={(e) => {
                     e.preventDefault();
