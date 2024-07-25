@@ -49,7 +49,7 @@ export const Profile = () => {
 
     const confirmButtonHandler = async () => {
         const response = await updateProfile(editData, token)
-        if(response.success){
+        if (response.success) {
             const newData = await getUserProfile(token)
             sedProfileData(newData.data)
             sedEditing(!editting)
@@ -62,17 +62,61 @@ export const Profile = () => {
     }
 
     return (
-        <>
-            <h1>Profile</h1>
-            <h2>Welcome {profileData.email}</h2>
-            <p className={editting ? "hidden" : ""}>Name: {profileData.first_name ? profileData.first_name : "Not available"}</p>
-            <CInput type="text" name="first_name" placeholder="name" className={editting ? "" : "hidden"} emitFunction={editInputHandler} />
-            <p className={editting ? "hidden" : ""}>Email: {profileData.email}</p>
-            <CInput type="email" name="email" placeholder={editData.email} className={editting ? "" : "hidden"} emitFunction={editInputHandler} />
-            <p>Created_at: {profileData.created_at}</p>
-            <CInput type="button" name="edit" value={!editting ? "edit" : "cancel"} emitOnClickButton={editButtonHandler} />
-            <CInput type="button" name="edit" value="Save changes" className={!editting ? "hidden" : ""} emitOnClickButton={confirmButtonHandler}
-            />
-        </>
-    )
-}
+        <div className="container">
+            <div className="row justify-content-center">
+                <div className="col-md-6">
+                    <div className="card mt-3 mb-3"> {/* Ajusta los márgenes aquí */}
+                        <div className="card-body">
+                            <h1 className="text-center mb-4">Profile</h1>
+                            <h2 className="text-center">Welcome {profileData.email}</h2>
+                            <div className={`form-group ${editting ? "" : "d-none"}`}>
+                                <CInput
+                                    type="text"
+                                    name="first_name"
+                                    placeholder="Name"
+                                    className="form-control"
+                                    emitFunction={editInputHandler}
+                                />
+                            </div>
+                            <p className={`form-group ${editting ? "d-none" : ""}`}>
+                                Name: {profileData.first_name || "Not available"}
+                            </p>
+                            <div className={`form-group ${editting ? "" : "d-none"}`}>
+                                <CInput
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    className="form-control"
+                                    emitFunction={editInputHandler}
+                                />
+                            </div>
+                            <p className={`form-group ${editting ? "d-none" : ""}`}>
+                                Email: {profileData.email}
+                            </p>
+                            <p className="form-group">
+                                Created_at: {profileData.created_at}
+                            </p>
+                            <div className="text-center">
+                                <CInput
+                                    type="button"
+                                    name="edit"
+                                    value={!editting ? "Edit" : "Cancel"}
+                                    className="btn btn-danger"
+                                    emitOnClickButton={editButtonHandler}
+                                />
+                                <CInput
+                                    type="button"
+                                    name="save"
+                                    value="Save changes"
+                                    className={`btn btn-success mx-2 ${!editting ? "d-none" : ""}`}
+                                    emitOnClickButton={confirmButtonHandler}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
