@@ -5,7 +5,7 @@ import { getUserProfile, updateProfile } from '../../services/apiCalls'
 import "./Profile.css"
 
 export const Profile = () => {
-    const [profileData, setProfileData] = useState({ name: "", email: "", CreatedAt: "" })
+    const [profileData, sedProfileData] = useState({ name: "", email: "", CreatedAt: "" })
     const [editData, sedEditData] = useState({
         name: "",
         email: ""
@@ -21,7 +21,7 @@ export const Profile = () => {
         } else {
             const bringMyProfile = async () => {
                 const response = await getUserProfile(passport.token)
-                setProfileData(response.data)
+                sedProfileData(response.data)
                 console.log(response)
             }
             bringMyProfile()
@@ -49,7 +49,11 @@ export const Profile = () => {
 
     const confirmButtonHandler = async () => {
         const response = await updateProfile(editData, token)
-        console.log(response)
+        if(response.success){
+            const newData = await getUserProfile(token)
+            sedProfileData(newData.data)
+            sedEditing(!editting)
+        }
     }
 
     const logout = () => {
