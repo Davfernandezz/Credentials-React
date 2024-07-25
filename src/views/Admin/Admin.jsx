@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { getUsers } from '../../services/apiCalls'
+import { deleteUserById, getUsers } from '../../services/apiCalls'
 import './Admin.css';
+import { CInput } from '../../components/CInput/CInput';
 
 export const Admin = () => {
     const [users, setUsers] = useState([])
@@ -19,7 +20,11 @@ export const Admin = () => {
         bringAllUsers()
     }, []);
 
-
+    const deleteUserHandler = async (e) => {
+        const id = e.target.name
+        const res = await deleteUserById(token, id)
+        console.log (res)
+      }
     return (
         <>
             <h1>Admin</h1>
@@ -36,7 +41,7 @@ export const Admin = () => {
                             <div className="content">{user.id}</div>
                             <div className="content">{user.email}</div>
                             <div className="content">{user.created_at}</div>
-                            <div className="content">actions</div>
+                            <div className="content"><input type="button" name={user.id} value="🛇" onClick={deleteUserHandler}/></div>
                         </div>
                     )
                 })}
