@@ -4,7 +4,6 @@
     margin: 0 auto;
   }
   
-  /* Estilo de las imágenes del carrusel */
   .carousel-image {
     width: 100%;
     height: auto;
@@ -15,14 +14,12 @@
     transition: filter 0.5s ease-in-out;
   }
   
-  /* Estilo del contenedor de las imágenes del carrusel */
   .carousel-inner {
     position: relative;
     width: 100%;
     overflow: hidden;
   }
   
-  /* Estilo de las leyendas del carrusel */
   .carousel-caption {
     background-color: rgba(0, 0, 0, 0.5); 
     padding: 10px;
@@ -42,7 +39,6 @@
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
   }
   
-  /* Estilo de los controles del carrusel */
   .carousel-control-prev,
   .carousel-control-next {
     margin-top: 10%;
@@ -57,7 +53,6 @@
     height: 40px;
   }
   
-  /* Transiciones del carrusel */
   .carousel-item {
     transition: opacity 1s ease-in-out;
   }
@@ -68,7 +63,6 @@
     transition: opacity 1s ease-in-out;
   }
   
-  /* Estilo responsivo */
   @media (max-width: 767px) {
     .carousel-caption h5 {
       font-size: 1.5rem;

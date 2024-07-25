@@ -41,3 +41,7 @@ h1 {
 .justify-space-between {
   justify-content: space-between;
 }
+
+.card{
+  background-color: rgb(232, 234, 235);
+}
