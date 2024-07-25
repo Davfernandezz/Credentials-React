@@ -7,8 +7,14 @@ import { Services } from '../Services/Services'
 import { Register } from '../Register/Register'
 import { Profile } from '../Profile/Profile'
 import { Appointments } from '../Appointments/Appointments'
+import { Admin } from '../Admin/Admin'
 
 export const Body = () => {
+
+    const passport = JSON.parse(localStorage.getItem("passport"))
+    const role = passport.tokenData.role_id
+    console.log(role)
+
     return (
         <>
             <Routes>
@@ -19,6 +25,7 @@ export const Body = () => {
                 <Route path="/services" element={<Services />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/appointments" element={<Appointments />} />
+                {role === 2 && <Route path="/admin" element={<Admin />} />}
             </Routes>
         </>
     )
