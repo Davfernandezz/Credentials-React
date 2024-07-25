@@ -23,7 +23,7 @@ export const Admin = () => {
     const deleteUserHandler = async (e) => {
         const id = e.target.name
         const res = await deleteUserById(token, id)
-        console.log (res)
+        
       }
     return (
         <>

@@ -1,0 +1,17 @@
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-control {
+    border-radius: 0;
+  }
+  
+  .btn-primary {
+    border-radius: 0;
+  }
+  
+  
+  .btn-danger:hover {
+    background-color: #ff0000;
+    border-color: #ff0000;
+  }
