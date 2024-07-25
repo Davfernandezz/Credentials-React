@@ -12,7 +12,11 @@ import { Admin } from '../Admin/Admin'
 export const Body = () => {
 
     const passport = JSON.parse(localStorage.getItem("passport"))
-    const role = passport.tokenData.role_id
+    let role = null
+
+    if (passport) {
+        role = passport.tokenData.role_id
+    }
     console.log(role)
 
     return (
