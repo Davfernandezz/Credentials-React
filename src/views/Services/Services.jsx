@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CCard } from '../../components/CCard/CCard'
+import "./Services.css"
 
 export const Services = () => {
 
@@ -24,14 +25,17 @@ export const Services = () => {
   }, [])
 
   return (
-    <>
-      <h1>Services</h1>
-      {
-        services.map((service) => (
-         <CCard key={service.id} name={service.service_name} description={service.description}/>
-        )
-        )
-      }
-    </>
-  )
-}
+    <div className="container">
+    <div className="card">
+      <h1 className="text-center">Services</h1>
+    </div>
+    <div className="row">
+      {services.map((service) => (
+        <div key={service.id} className="col-md-4 mb-4">
+          <CCard name={service.service_name} description={service.description} />
+        </div>
+      ))}
+    </div>
+  </div>
+);
+};
