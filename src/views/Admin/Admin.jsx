@@ -21,10 +21,19 @@ export const Admin = () => {
     }, []);
 
     const deleteUserHandler = async (e) => {
-        const id = e.target.name
-        const res = await deleteUserById(token, id)
-        
-      }
+        const id = +e.target.name;
+    const res = await deleteUserById(token, id);
+    if (res.success) {
+      const remainingUsers = users.filter((user) => {
+        if (user.id !== id) {
+            console.log(user)
+            return user
+        };
+      });
+      console.log(remainingUsers)
+      setUsers(remainingUsers);
+    }
+  };
     return (
         <>
             <h1>Admin</h1>
