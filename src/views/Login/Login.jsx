@@ -4,8 +4,10 @@ import { loginUser } from '../../services/apiCalls';
 import { jwtDecode } from 'jwt-decode';
 import { isTokenValid } from '../../components/utils/function';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+  const navigate = useNavigate()
     const [credentials, setCredentials] = useState(
         {
             email: "",
@@ -36,6 +38,7 @@ export const Login = () => {
             }
             localStorage.setItem("passport",JSON.stringify(passport));
             isTokenValid(decodedToken.exp);
+            navigate('/profile')
           } else {
             console.log(response);
           }
