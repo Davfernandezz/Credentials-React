@@ -46,6 +46,7 @@ export const Profile = () => {
     }
 
     const confirmButtonHandler = async () => {
+        const token = passport.token;
         const response = await updateProfile(editData, token)
         if (response.success) {
             const newData = await getUserProfile(token)
