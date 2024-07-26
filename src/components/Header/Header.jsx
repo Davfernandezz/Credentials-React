@@ -1,11 +1,13 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CSurfer } from '../CSurfer/CSurfer';
 import './Header.css';
 
 export const Header = () => {
-
     const navigate = useNavigate();
+
+    const passport = JSON.parse(localStorage.getItem("passport"));
+    const role = passport ? passport.tokenData.role_id : null;
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
@@ -41,6 +43,11 @@ export const Header = () => {
                         <li className="nav-item">
                             <CSurfer path="/appointments" content="Appointments" />
                         </li>
+                        {role === 2 && (
+                            <li className="nav-item">
+                                <CSurfer path="/admin" content="Admin" />
+                            </li>
+                        )}
                         <li className="nav-item">
                             <CSurfer path="/login" content="Login" />
                         </li>

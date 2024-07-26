@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { deleteUserById, getUsers } from '../../services/apiCalls'
 import './Admin.css';
-import { CInput } from '../../components/CInput/CInput';
 
 export const Admin = () => {
     const [users, setUsers] = useState([])

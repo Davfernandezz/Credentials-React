@@ -1,23 +1,22 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import { Login } from '../Login/Login'
-import { Home } from '../Home/Home'
-import { NotFound } from '../NotFound/NotFound'
-import { Services } from '../Services/Services'
-import { Register } from '../Register/Register'
-import { Profile } from '../Profile/Profile'
-import { Appointments } from '../Appointments/Appointments'
-import { Admin } from '../Admin/Admin'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { Login } from '../Login/Login';
+import { Home } from '../Home/Home';
+import { NotFound } from '../NotFound/NotFound';
+import { Services } from '../Services/Services';
+import { Register } from '../Register/Register';
+import { Profile } from '../Profile/Profile';
+import { Appointments } from '../Appointments/Appointments';
+import { Admin } from '../Admin/Admin';
 
 export const Body = () => {
-
-    const passport = JSON.parse(localStorage.getItem("passport"))
-    let role = null
+    const passport = JSON.parse(localStorage.getItem("passport"));
+    let role = null;
 
     if (passport) {
-        role = passport.tokenData.role_id
+        role = passport.tokenData.role_id;
     }
-    console.log(role)
+    console.log("User role:", role);
 
     return (
         <>
@@ -32,5 +31,5 @@ export const Body = () => {
                 {role === 2 && <Route path="/admin" element={<Admin />} />}
             </Routes>
         </>
-    )
-}
+    );
+};
