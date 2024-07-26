@@ -13,7 +13,7 @@ export const CInput = ({ type = 'text', name = "", placeholder = "", emitFunctio
                 placeholder={placeholder}
                 onChange={emitFunction}
                 onClick={emitOnClickButton}
-                className={`input-design text-size-xl background-teal bold position-absolute ${className}`}
+                className={className}
             />
         </>
     )

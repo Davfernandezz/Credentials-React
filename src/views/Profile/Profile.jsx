@@ -12,21 +12,20 @@ export const Profile = () => {
     })
     const [editting, sedEditing] = useState(false)
     const passport = JSON.parse(localStorage.getItem("passport"))
-    const token = passport.token
     const navigate = useNavigate()
 
     useEffect(() => {
         if (!passport) {
-            navigate("/login")
+            navigate("/login");
         } else {
             const bringMyProfile = async () => {
-                const response = await getUserProfile(passport.token)
-                sedProfileData(response.data)
-                console.log(response)
-            }
-            bringMyProfile()
+                const response = await getUserProfile(passport.token);
+                sedProfileData(response.data);
+                console.log(response);
+            };
+            bringMyProfile();
         }
-    }, [])
+    }, []);
 
     const editButtonHandler = () => {
         sedEditData({
@@ -37,7 +36,6 @@ export const Profile = () => {
     }
 
     useEffect(() => {
-        console.log("estamos editando", profileData)
     }, [profileData])
 
     const editInputHandler = (e) => {
@@ -65,7 +63,7 @@ export const Profile = () => {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-6">
-                    <div className="card mt-3 mb-3"> {/* Ajusta los márgenes aquí */}
+                    <div className="card mt-3 mb-3">
                         <div className="card-body">
                             <h1 className="text-center mb-4">Profile</h1>
                             <h2 className="text-center">Welcome {profileData.email}</h2>

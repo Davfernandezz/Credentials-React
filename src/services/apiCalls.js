@@ -94,3 +94,51 @@ export const deleteUserById = async (token, id) => {
 
     }
 }
+
+export const createAppointments = async (credentials) => {
+    try {
+        const request = await fetch(`${URL}/appointments/create`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(credentials),
+        });
+        const result = await request.json();
+        return result;
+    } catch (error) {
+
+    }
+}
+
+export const getAppointmentsUser = async (credentials) => {
+    try {
+        const response = await fetch(`${URL}/api/appointments/user`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+        });
+
+        return await response.json();
+    } catch (error) {
+
+    }
+}
+
+export const deleteAppointmentsUser = async (credentials) => {
+    try {
+        const response = await fetch(`${URL}/api/appointments/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+        });
+        return await response.json();
+    } catch (error) {
+
+    }
+}
