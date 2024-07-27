@@ -112,25 +112,29 @@ export const createAppointments = async (credentials) => {
     }
 }
 
-export const getAppointmentsUser = async (credentials) => {
+export const getAppointmentsUser = async (token) => {
     try {
-        const response = await fetch(`${URL}/api/appointments/user`, {
+        const response = await fetch(`${URL}/appointments/user`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
         });
-
-        return await response.json();
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
     } catch (error) {
-
+        console.error("Error fetching appointments:", error);
+        throw error;
     }
-}
+};
 
 export const deleteAppointmentsUser = async (credentials) => {
     try {
-        const response = await fetch(`${URL}/api/appointments/${id}`, {
+        const response = await fetch(`${URL}/appointments/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

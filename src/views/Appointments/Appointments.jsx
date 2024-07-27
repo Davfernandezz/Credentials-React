@@ -1,71 +1,74 @@
-import { useEffect, useState } from "react";
-import { CSelect } from "../../components/CSelect/CSelect";
-import { createAppointments } from "../../services/apiCalls";
+import React, { useEffect, useState } from "react";
+import { getAppointmentsUser } from "../../services/apiCalls";
+import './Appointments.css';
+
+const formatDate = (isoDate) => {
+  const date = new Date(isoDate);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
 
 export const Appointments = () => {
-    const [appointments, setAppointments] = useState([]);
-    const [newAppointment, setNewAppointment] = useState({
-        user_id: "",
-        service_id: "",
-        Date: "",
-    });
+  const [myAppointments, setMyAppointments] = useState([]);
+  const passport = JSON.parse(localStorage.getItem("passport"));
 
-    const inputHandler = (e) => {
-        if (e.target.value === "Elige el servicio") {
-            console.log("You cannot pass");
-            return;
+  useEffect(() => {
+    const bringMyAppointments = async () => {
+      try {
+        const result = await getAppointmentsUser(passport.token);
+        console.log("Appointments data:", result);
+        if (result.success && Array.isArray(result.data)) {
+          setMyAppointments(result.data);
+        } else {
+          console.error('La respuesta no tiene la estructura esperada:', result);
+          setMyAppointments([]);
         }
-        console.log(e.target.value);
-        setNewAppointment({
-            ...newAppointment,
-            [e.target.name]: e.target.value,
-        });
+      } catch (error) {
+        console.error('Error al obtener las citas:', error);
+        setMyAppointments([]);
+      }
     };
+    bringMyAppointments();
+  }, [passport.token]);
 
-    const handleSendAppointment = async () => {
-        try {
-            const response = await createAppointments(newAppointment, token);
-            if (response.success) {
-                console.log(response);
-            }
-        } catch (error) {
-            console.error("Error sending appointment:", error);
-        }
-    };
-
-    const services = [
-        { id: 1, serviceName: "Tatuajes personalizados" },
-        { id: 2, serviceName: "Tatuajes del catálogo" },
-        { id: 3, serviceName: "Restauración y rejuvenecimiento de trabajos" },
-        { id: 4, serviceName: "Colocación de piercings y dilatadores" },
-        { id: 5, serviceName: "Venta de piercings y otros artículos" },
-    ];
-
-    const todayFullTimeString = new Date()
-        .toISOString()
-        .slice(0, new Date().toISOString().lastIndexOf(":")); 
-    
-    return (
-        <div>
-            <input
-                type="datetime-local"
-                min={todayFullTimeString}
-                value={newAppointment.Date}
-                name="Date"
-                onChange={inputHandler}
-            />
-            <CSelect
-                category="Choose Service"
-                options={services}
-                handler={inputHandler}
-            />
-            <button
-                type="button"
-                className="btn btn-danger btn-block"
-                onClick={handleSendAppointment}
-            >
-                Send
-            </button>
-        </div>
-    );
+  return (
+    <div className="appointments-container container mt-4">
+      <div className="card">
+        <h1 className="text-center mt-3 mb-3">My Appointments</h1>
+      </div>
+      <div className="table-responsive">
+        <table className="table table-striped table-hover">
+          <thead className="thead-dark">
+            <tr>
+              <th className="text-center">ID</th>
+              <th className="text-center">Date</th>
+              <th className="text-center">Service ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            {myAppointments.length ? (
+              myAppointments.map((appointment) => (
+                <tr key={appointment.id}>
+                  <td className="text-center">{appointment.id}</td>
+                  <td className="text-center">{formatDate(appointment.date)}</td>
+                  <td className="text-center">{appointment.services.service_id}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="3" className="text-center">
+                  You have no appointments yet.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
+
+export default Appointments;
