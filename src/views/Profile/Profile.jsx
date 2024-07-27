@@ -62,11 +62,6 @@ export const Profile = () => {
         }
     }
 
-    const logout = () => {
-        localStorage.removeItem("passport")
-        navigate("/login")
-    }
-
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -85,6 +80,7 @@ export const Profile = () => {
                                 />
                             </div>
                             <p className={`form-group ${editting ? "d-none" : ""}`}>
+                                <br></br>
                                 Name: {profileData.first_name || "Not available"}
                             </p>
                             <div className={`form-group ${editting ? "" : "d-none"}`}>
