@@ -6,25 +6,19 @@ import './Admin.css';
 export const Admin = () => {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
-
-    // Intentar obtener el token del almacenamiento local
     const passport = JSON.parse(localStorage.getItem('passport'));
     const token = passport ? passport.token : null;
 
     useEffect(() => {
         if (!token) {
-            // Si no hay token, redirigir al usuario a la página de inicio de sesión
             navigate('/login');
             return;
         }
-
         const bringAllUsers = async () => {
             const allUsers = await getUsers(token);
-            console.log(allUsers);
             if (allUsers.success) {
                 setUsers(allUsers.data);
             } else {
-                // Si el token es inválido o no se puede obtener la lista de usuarios, redirigir
                 navigate('/login');
             }
         };
@@ -33,23 +27,19 @@ export const Admin = () => {
 
     const deleteUserHandler = async (e) => {
         if (!token) {
-            // No permitir la acción si no hay token
             alert('No estás autorizado para realizar esta acción.');
             navigate('/login');
             return;
         }
-
         const id = +e.target.name;
         const res = await deleteUserById(token, id);
         if (res.success) {
             const remainingUsers = users.filter((user) => user.id !== id);
             setUsers(remainingUsers);
         } else {
-            // Manejar el caso de error al eliminar el usuario
             alert('Error al eliminar el usuario. Verifica tu sesión.');
         }
     };
-
     return (
         <div className="admin-container container mt-4">
             <div className="card">

@@ -21,7 +21,6 @@ export const Profile = () => {
             const bringMyProfile = async () => {
                 const response = await getUserProfile(passport.token);
                 sedProfileData(response.data);
-                console.log(response);
             };
             bringMyProfile();
         }
@@ -37,7 +36,6 @@ export const Profile = () => {
 
     useEffect(() => {
     }, [profileData])
-
     const editInputHandler = (e) => {
         sedEditData({
             ...editData,

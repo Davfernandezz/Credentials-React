@@ -9,15 +9,12 @@ export const Services = () => {
   const passport = JSON.parse(localStorage.getItem("passport"))
 
   useEffect(() => {
-    console.log('UseEffect')
-
     fetch('http://localhost:4000/api/services')
       .then(res => {
         return res.json();
       })
       .then(res => {
         setServices(res.data)
-        console.log(res);
       })
       .catch(e => {
         console.log(e);

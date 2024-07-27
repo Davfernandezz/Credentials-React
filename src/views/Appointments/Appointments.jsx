@@ -2,32 +2,29 @@ import React, { useEffect, useState } from "react";
 import { getAppointmentsUser } from "../../services/apiCalls";
 import './Appointments.css';
 
-const formatDate = (isoDate) => {
-  const date = new Date(isoDate);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-};
-
 export const Appointments = () => {
   const [myAppointments, setMyAppointments] = useState([]);
   const passport = JSON.parse(localStorage.getItem("passport"));
+
+  const formatDate = (isoDate) => {
+    const date = new Date(isoDate);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
 
   useEffect(() => {
     const bringMyAppointments = async () => {
       try {
         const result = await getAppointmentsUser(passport.token);
-        console.log("Appointments data:", result);
         if (result.success && Array.isArray(result.data)) {
           setMyAppointments(result.data);
         } else {
-          console.error('La respuesta no tiene la estructura esperada:', result);
           setMyAppointments([]);
         }
       } catch (error) {
-        console.error('Error al obtener las citas:', error);
         setMyAppointments([]);
       }
     };
@@ -54,7 +51,7 @@ export const Appointments = () => {
                 <tr key={appointment.id}>
                   <td className="text-center">{appointment.id}</td>
                   <td className="text-center">{formatDate(appointment.date)}</td>
-                  <td className="text-center">{appointment.services.service_id}</td>
+                  <td className="text-center">{appointment.services.service_name}</td>
                 </tr>
               ))
             ) : (
@@ -70,5 +67,3 @@ export const Appointments = () => {
     </div>
   );
 };
-
-export default Appointments;

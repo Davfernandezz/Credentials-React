@@ -14,7 +14,6 @@ export const Register = () => {
     )
 
     function handleChange(e) {
-        console.log('Handle Change')
         setCredentials((prevState) => (
             {
                 ...prevState,
@@ -25,7 +24,6 @@ export const Register = () => {
 
     async function register() {
         try {
-            console.log(credentials);
             const response = await registerUser(credentials)
 
             if (response.success) {
@@ -33,7 +31,6 @@ export const Register = () => {
             } else {
                 alert(response.message)
             }
-
             console.log(response)
         } catch (error) {
             console.log(error);

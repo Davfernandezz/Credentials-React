@@ -16,7 +16,6 @@ export const Login = () => {
     )
 
     function handleChange(e) {
-        console.log('handleChange');
         setCredentials(prevState => (
             {
                 ...prevState,
@@ -26,8 +25,6 @@ export const Login = () => {
     }
 
     async function login() {
-        console.log("login");
-        console.log(credentials);
         try {
           const response = await loginUser(credentials);
           if (response.success) {

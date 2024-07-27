@@ -1,4 +1,3 @@
-
 const URL = 'http://localhost:4000/api'
 
 export const registerUser = async (credentials) => {
@@ -13,7 +12,8 @@ export const registerUser = async (credentials) => {
         const result = await request.json();
         return result;
     } catch (error) {
-
+        console.error("User register error:", error);
+        throw error;
     }
 }
 
@@ -30,7 +30,8 @@ export const loginUser = async (credentials) => {
         const result = await request.json();
         return result;
     } catch (error) {
-
+        console.error("User logging error:", error);
+        throw error;
     }
 }
 
@@ -45,7 +46,8 @@ export const getUserProfile = async (token) => {
         });
         return await response.json()
     } catch (error) {
-
+        console.error("Error fetching user:", error);
+        throw error;
     }
 }
 
@@ -61,7 +63,8 @@ export const updateProfile = async (changes, token) => {
         });
         return await response.json()
     } catch (error) {
-
+        console.error("Error updating user:", error);
+        throw error;
     }
 }
 
@@ -76,7 +79,8 @@ export const getUsers = async (token) => {
         });
         return await response.json()
     } catch (error) {
-
+        console.error("Error fetching user:", error);
+        throw error;
     }
 }
 
@@ -91,7 +95,8 @@ export const deleteUserById = async (token, id) => {
         })
         return await response.json()
     } catch (error) {
-
+        console.error("Error deleting user:", error);
+        throw error;
     }
 }
 
@@ -108,7 +113,8 @@ export const createAppointments = async (credentials) => {
         const result = await request.json();
         return result;
     } catch (error) {
-
+        console.error("Error create appointments:", error);
+        throw error;
     }
 }
 
@@ -121,9 +127,6 @@ export const getAppointmentsUser = async (token) => {
                 "Authorization": `Bearer ${token}`
             },
         });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
         const data = await response.json();
         return data;
     } catch (error) {
@@ -143,6 +146,7 @@ export const deleteAppointmentsUser = async (credentials) => {
         });
         return await response.json();
     } catch (error) {
-
+        console.error("Error deleting appointments:", error);
+        throw error;
     }
 }
