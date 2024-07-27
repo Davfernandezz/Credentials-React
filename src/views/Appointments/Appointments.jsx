@@ -78,45 +78,47 @@ export const Appointments = () => {
 
     return (
         <div className="appointments-container container mt-4">
-          <div className="card p-4 mb-4">
-            <div className="create-appointment">
-              <h2 className="text-center mb-4">New Appointment</h2>
-              <div className="form-group">
-                <label htmlFor="date">Date:</label>
-                <input
-                  type="date"
-                  id="date"
-                  min={todayString}
-                  value={newAppointment.date}
-                  name="date"
-                  onChange={(e) => inputHandler(e)}
-                  className="form-control"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="service_id">Service:</label>
-                <select
-                  id="service_id"
-                  name="service_id"
-                  value={newAppointment.service_id}
-                  onChange={(e) => inputHandler(e)}
-                  className="form-control"
-                >
-                  <option value="" disabled hidden>
-                    Select a service...
-                  </option>
-                  <option value={1}>Tatuaje Personalizado</option>
-                  <option value={2}>Tatuaje del Catálogo</option>
-                  <option value={3}>Restauración y Rejuvenecimiento</option>
-                  <option value={4}>Colocación de Piercings y dilatadores</option>
-                  <option value={5}>Venta de piercings y otros artículos</option>
-                </select>
-              </div>
-              <button onClick={handleSendAppointment} className="btn btn-success btn-block mt-3">
-                Create Appointment
-              </button>
+          <div className="create-appointment card p-4 mb-4">
+            <h2 className="text-center mb-4">New Appointment</h2>
+            <div className="form-group">
+              <label htmlFor="date">Date:</label>
+              <input
+                type="date"
+                id="date"
+                min={todayString}
+                value={newAppointment.date}
+                name="date"
+                onChange={(e) => inputHandler(e)}
+                className="form-control"
+              />
             </div>
+            <div className="form-group">
+              <label htmlFor="service_id">Service:</label>
+              <select
+                id="service_id"
+                name="service_id"
+                value={newAppointment.service_id}
+                onChange={(e) => inputHandler(e)}
+                className="form-control"
+              >
+                <option value="" disabled hidden>
+                  Select a service...
+                </option>
+                <option value={1}>Tatuaje Personalizado</option>
+                <option value={2}>Tatuaje del Catálogo</option>
+                <option value={3}>Restauración y Rejuvenecimiento</option>
+                <option value={4}>Colocación de Piercings y dilatadores</option>
+                <option value={5}>Venta de piercings y otros artículos</option>
+              </select>
+            </div>
+            <button
+              onClick={handleSendAppointment}
+              className="btn btn-success btn-block mt-3"
+            >
+              Create Appointment
+            </button>
           </div>
+    
           <div className="card p-4">
             <h2 className="text-center mb-4">My Appointments</h2>
             <div className="table-responsive">
@@ -162,3 +164,4 @@ export const Appointments = () => {
         </div>
       );
     };
+    
