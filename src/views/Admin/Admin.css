@@ -27,11 +27,7 @@
     color: white;
 }
 
-.btn-danger {
-    background-color: #e74c3c;
-    border: none;
-}
-
 .btn-danger:hover {
-    background-color: #c0392b;
+    background-color: #ff0000;
+    border-color: #ff0000;
 }

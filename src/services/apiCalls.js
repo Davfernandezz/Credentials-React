@@ -100,23 +100,19 @@ export const deleteUserById = async (token, id) => {
     }
 }
 
-export const createAppointments = async (credentials) => {
-    try {
-        const request = await fetch(`${URL}/appointments/create`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(credentials),
-        });
-        const result = await request.json();
-        return result;
-    } catch (error) {
-        console.error("Error create appointments:", error);
-        throw error;
-    }
-}
+export const createAppointments = async (data, token) => {
+    data.service_id = parseInt(data.service_id);
+    const response = await fetch(`${URL}/appointments/create`, {
+      method: "POST",
+      headers: {
+        "content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    });
+  
+    return await response.json();
+  };
 
 export const getAppointmentsUser = async (token) => {
     try {
