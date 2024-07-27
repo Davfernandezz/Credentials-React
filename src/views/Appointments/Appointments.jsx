@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getAppointmentsUser } from "../../services/apiCalls";
+import { useNavigate } from 'react-router-dom';
 import './Appointments.css';
 
 export const Appointments = () => {
   const [myAppointments, setMyAppointments] = useState([]);
   const passport = JSON.parse(localStorage.getItem("passport"));
+  const navigate = useNavigate();
 
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
@@ -16,6 +18,10 @@ export const Appointments = () => {
   };
 
   useEffect(() => {
+    if (!passport) {
+      navigate("/login");
+      return; 
+    }
     const bringMyAppointments = async () => {
       try {
         const result = await getAppointmentsUser(passport.token);
@@ -29,7 +35,7 @@ export const Appointments = () => {
       }
     };
     bringMyAppointments();
-  }, [passport.token]);
+  }, [passport, navigate]);
 
   return (
     <div className="appointments-container container mt-4">
