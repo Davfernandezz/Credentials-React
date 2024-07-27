@@ -9,6 +9,15 @@ export const Admin = () => {
     const passport = JSON.parse(localStorage.getItem('passport'));
     const token = passport ? passport.token : null;
 
+    const formatDate = (isoDate) => {
+        const date = new Date(isoDate);
+        return date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      };
+
     useEffect(() => {
         if (!token) {
             navigate('/login');
@@ -63,7 +72,7 @@ export const Admin = () => {
                                     <td>{user.id}</td>
                                     <td>{user.first_name || 'Not available'}</td>
                                     <td>{user.email}</td>
-                                    <td>{user.created_at}</td>
+                                    <td>{formatDate(user.created_at)}</td>
                                     <td>
                                         <button type="button" name={user.id} className="btn btn-danger btn-sm" onClick={deleteUserHandler}>Delete</button>
                                     </td>

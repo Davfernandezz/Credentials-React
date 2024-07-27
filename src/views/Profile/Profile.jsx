@@ -14,6 +14,15 @@ export const Profile = () => {
     const passport = JSON.parse(localStorage.getItem("passport"))
     const navigate = useNavigate()
 
+    const formatDate = (isoDate) => {
+        const date = new Date(isoDate);
+        return date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      };
+
     useEffect(() => {
         if (!passport) {
             navigate("/login");
@@ -91,7 +100,7 @@ export const Profile = () => {
                                 Email: {profileData.email}
                             </p>
                             <p className="form-group">
-                                Created_at: {profileData.created_at}
+                                Created_at: {formatDate(profileData.created_at)}
                             </p>
                             <div className="text-center">
                                 <CInput

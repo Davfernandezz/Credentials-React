@@ -48,7 +48,7 @@ export const Appointments = () => {
             <tr>
               <th className="text-center">ID</th>
               <th className="text-center">Date</th>
-              <th className="text-center">Service ID</th>
+              <th className="text-center">Service</th>
             </tr>
           </thead>
           <tbody>
