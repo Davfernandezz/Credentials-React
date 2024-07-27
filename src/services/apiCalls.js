@@ -135,9 +135,9 @@ export const getAppointmentsUser = async (token) => {
     }
 };
 
-export const deleteAppointmentsUser = async (credentials) => {
+export const deleteAppointmentsUser = async (token, id) => {
     try {
-        const response = await fetch(`${URL}/appointments/${id}`, {
+        const response = await fetch(`${URL}/appointments/${+id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
