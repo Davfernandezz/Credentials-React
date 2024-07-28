@@ -22,8 +22,10 @@ Welcome to my TattooShop Frontend project, I hope you like it!✨
 <br>
 
 ## Description📚
-This project consists in the generation of the front end that connects to our API in charge of managing the business model of our tattoo studio. To do this we will generate views that allow us to register and log in as users, view our user profile and modify it, as well as view our appointments. In addition, we will need to be able to see the services offered by the studio and to be able to make new appointments. Finally, an administrator view from which you will be able to access the application information and modify it as appropriate.<br>
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Descripcion.JPG">
+This project consists in the generation of the front end that connects to our API in charge of managing the business model of our tattoo studio. To do this we will generate views that allow us to register and log in as users, view our user profile and modify it, as well as view our appointments. In addition, we will need to be able to see the services offered by the studio and to be able to make new appointments. Finally, an administrator view from which you will be able to access the application information and modify it as appropriate.<br><br>
+<p align="center">
+<img width="250" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Descripcion.PNG">
+</p>
 
 ## Objetive🎯
 The objetive of this project is to create a front end of the app versatile enough for clients, professionals and an administrator to access and make use of it, for this I have been using React until I get a good command of the language.
@@ -48,6 +50,18 @@ Used technology:
 </a>
 <a>
     <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="ts" />
+</a>
+<a>
+    <img src="https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white" alt="ExpressJS" alt="ts" />
+</a>
+<a>
+    <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="NPM" alt="ts" />
+</a>
+<a>
+    <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" alt="NPM" alt="ts" />
+</a>
+<a>
+    <img src="https://img.shields.io/badge/node.js-026E00?style=for-the-badge&logo=node.js&logoColor=white" alt="NPM" alt="ts" />
 </a>
 </div>
 
@@ -86,7 +100,6 @@ Used technology:
 ### Profile👥
 
 <img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Profile1.JPG">
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Profile2.JPG">
 
 ### Admin Dashboard💯
 
