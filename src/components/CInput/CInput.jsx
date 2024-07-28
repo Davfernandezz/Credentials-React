@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CInput = ({ type = 'text', name = "", placeholder = "", emitFunction, value, label }) => {
+export const CInput = ({ type = 'text', name = "", placeholder = "", emitFunction, emitOnClickButton, className, value, label }) => {
     return (
         <>
             <div>
@@ -9,8 +9,12 @@ export const CInput = ({ type = 'text', name = "", placeholder = "", emitFunctio
             <input
                 type={type}
                 name={name}
+                value={value}
                 placeholder={placeholder}
-                onChange={emitFunction} />
+                onChange={emitFunction}
+                onClick={emitOnClickButton}
+                className={className}
+            />
         </>
     )
 }
