@@ -24,7 +24,7 @@ Welcome to my TattooShop Frontend project, I hope you like it!✨
 ## Description📚
 This project consists in the generation of the front end that connects to our API in charge of managing the business model of our tattoo studio. To do this we will generate views that allow us to register and log in as users, view our user profile and modify it, as well as view our appointments. In addition, we will need to be able to see the services offered by the studio and to be able to make new appointments. Finally, an administrator view from which you will be able to access the application information and modify it as appropriate.<br><br>
 <p align="center">
-<img width="250" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Descripcion.PNG">
+<img width="250" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Descripcion.png">
 </p>
 
 ## Objetive🎯
