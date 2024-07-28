@@ -1,5 +1,7 @@
 const URL = 'http://localhost:4000/api'
 
+//AUTH
+
 export const registerUser = async (credentials) => {
     try {
         const request = await fetch(`${URL}/register`, {
@@ -17,7 +19,6 @@ export const registerUser = async (credentials) => {
     }
 }
 
-
 export const loginUser = async (credentials) => {
     try {
         const request = await fetch(`${URL}/login`, {
@@ -34,6 +35,9 @@ export const loginUser = async (credentials) => {
         throw error;
     }
 }
+
+
+//USERS
 
 export const getUserProfile = async (token) => {
     try {
@@ -99,6 +103,9 @@ export const deleteUserById = async (token, id) => {
         throw error;
     }
 }
+
+
+//APPOINTMENTS
 
 export const createAppointments = async (data, token) => {
     data.service_id = parseInt(data.service_id);

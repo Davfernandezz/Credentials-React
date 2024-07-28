@@ -16,7 +16,6 @@ export const Body = () => {
     if (passport) {
         role = passport.tokenData.role_id;
     }
-    console.log("User role:", role);
 
     return (
         <>
