@@ -1,6 +1,6 @@
-# TattooShop Frontend🖋️
+# TattooShop Frontend🌌
 
-Welcome to my TattooShop Frontend project, I hope you like it! 📈
+Welcome to my TattooShop Frontend project, I hope you like it!✨
 <br><br>
 <img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/72903324-cf57-4e90-80a6-ed3c9734e0ed" width="900">
 </a>
@@ -22,7 +22,7 @@ Welcome to my TattooShop Frontend project, I hope you like it! 📈
 <br>
 
 ## Description📚
-This project consists in the generation of the front end that connects to our API in charge of managing the business model of our tattoo studio.<br> To do this we will generate views that allow us to register and log in as users, view our user profile and modify it, as well as view our appointments. In addition, we will need to be able to see the services offered by the studio and to be able to make new appointments.<br> Finally, an administrator view from which you will be able to access the application information and modify it as appropriate.
+This project consists in the generation of the front end that connects to our API in charge of managing the business model of our tattoo studio.<br> To do this we will generate views that allow us to register and log in as users, view our user profile and modify it, as well as view our appointments. In addition, we will need to be able to see the services offered by the studio and to be able to make new appointments. Finally, an administrator view from which you will be able to access the application information and modify it as appropriate.
 
 
 ## Objetive🎯
@@ -52,9 +52,20 @@ Used technology:
 </div>
 
 ## Local installation🧾
+
+### Frontend📊
+
 1. Clone the repository
 2. ``` $ npm install  ```
 3. ``` $ npm run dev ```
+
+### Backend⚙️
+
+1. Install docker and create a mysql container
+2. Clone the repository
+3. ``` $ npm install  ```
+4. ``` $ npm db:refresh ```
+5. ``` $ npm run dev ```
 
 
 
@@ -62,21 +73,21 @@ Used technology:
 
 home.
 
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/home.JPG">
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Home.JPG">
 
 services.
 
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/services.JPG">
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Services.JPG">
 
 login and register.
 
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/login.JPG">
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/register.JPG">
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Login.JPG">
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Register.JPG">
 
 profile.
 
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/profile1.JPG">
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/profile2.JPG">
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Profile1.JPG">
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Profile2.JPG">
 
 admin.
 
@@ -84,11 +95,14 @@ admin.
 
 appointments.
 
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/appointment1.JPG">
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/appointment2.JPG">
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Appointment1.JPG">
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Appointment2.JPG">
 
 ## Future functionalities⏭️
-
+- Modifying a user as admin.
+- Data validation.
+- Error management.
+- ...
 
 
 ## Development👨🏻‍💻
